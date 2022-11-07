@@ -16,7 +16,7 @@ use wasmtime::{
 };
 
 use super::limiter::ExecMemory;
-use crate::gas::WasmGasPrices;
+use crate::gas::{GasTimer, WasmGasPrices};
 use crate::machine::NetworkConfig;
 use crate::syscalls::{bind_syscalls, InvocationData};
 use crate::Kernel;
@@ -407,6 +407,7 @@ impl Engine {
             last_milligas_available: 0,
             start_memory_bytes: memory_bytes,
             last_memory_bytes: memory_bytes,
+            last_charge_time: GasTimer::start(),
             memory: self.0.dummy_memory,
         };
 
