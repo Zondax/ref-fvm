@@ -136,11 +136,7 @@ where
         state_tree.set_actor(id, state).map_err(anyhow::Error::from)
     }
 
-    pub fn create_placeholder(
-        &mut self,
-        address: &Address,
-        init_balance: TokenAmount,
-    ) -> Result<()> {
+    pub fn create_embryo(&mut self, address: &Address, init_balance: TokenAmount) -> Result<ActorID> {
         assert_eq!(address.protocol(), Protocol::Delegated);
 
         let state_tree = self
@@ -163,7 +159,9 @@ where
 
         state_tree
             .set_actor(id, actor_state)
-            .map_err(anyhow::Error::from)
+            .map_err(anyhow::Error::from)?;
+
+        Ok(id)
     }
 
     /// Set a new state in the state tree
