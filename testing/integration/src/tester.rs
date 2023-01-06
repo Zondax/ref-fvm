@@ -82,7 +82,8 @@ where
         let storagemarket_state = storagemarket_actor::State::new_test(&blockstore);
         let storagepower_state = storagepower_actor::State::new_test(&blockstore);
         let verifreg_state = verifiedregistry_actor::State::new_test(&blockstore, Address::new_id(199));
-        let datacap_state = datacap_actor::State::new_test(&blockstore, Address::new_id(200));
+        // DATACAP actor's governor has to be Verifreg (actor id 6)
+        let datacap_state = datacap_actor::State::new_test(&blockstore, Address::new_id(6));
         let reward_state = reward_actor::State::new_test();
         let mut state_tree = StateTree::new(blockstore, stv).map_err(anyhow::Error::from)?;
 
