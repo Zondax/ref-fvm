@@ -74,7 +74,7 @@ where
             };
 
         // Get sys and init actors code cid
-        let (sys_code_cid, init_code_cid, accounts_code_cid, embryo_code_cid, eam_code_cid, market_code_cid, power_code_cid, verifreg_code_cid, datacap_code_cid, reward_code_cid) =
+        let (sys_code_cid, init_code_cid, accounts_code_cid, placeholder_code_cid, embryo_code_cid, eam_code_cid, market_code_cid, power_code_cid, verifreg_code_cid, datacap_code_cid, reward_code_cid) =
             fetch_builtin_code_cid(&blockstore, &manifest_data_cid, manifest_version)?;
 
         // Initialize state tree
